@@ -1,0 +1,4 @@
+{
+    "characteristicsText": ["strength", "dexterity", "body_type", "intelligence", "wisdom", "charisma"],
+    "skillsText": ["acrobatics", "athletics", "magic", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "conviction", "religion", "sleight_of_hand", "secrecy", "survival", "communication_with_animals"]
+}
