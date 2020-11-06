@@ -39,8 +39,7 @@ function Inventory(props) {
         }}>
           <Text>{text[0].character.items}</Text>
           <TextArea placeholder="Write something.." value={characterSet.items} onChangeText={ (value) => {
-              setCharacterSet({...characterSet, items: value}) 
-              console.log(characterSet.items);         
+              setCharacterSet({...characterSet, items: value})                      
             }
           }/>
         </View>
