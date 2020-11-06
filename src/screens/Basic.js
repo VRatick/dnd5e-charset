@@ -13,7 +13,7 @@ function Basic(props) {
   const weapons = [];  
   for (let i = 0; i < characterSet.weapon_count; i++) {
     weapons.push(
-      <View>
+      <View key={i+1}>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
           onChangeText={text => {   
@@ -105,9 +105,9 @@ function Basic(props) {
             {hp}
           </View>
           <View>
+            <Text>{text[0].character.weapon}</Text>
             {weapons}
-          </View>
-          <Button
+            <Button
             onPress={() => {
               if (characterSet.weapon_count !== 5) {
               setCharacterSet({...characterSet, weapon_count: characterSet.weapon_count + 1})
@@ -117,6 +117,7 @@ function Basic(props) {
             color="green"
             accessibilityLabel="Learn more about this purple button"
           />  
+          </View>          
         </View>
       </ScrollView>
     );

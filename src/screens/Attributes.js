@@ -77,6 +77,26 @@ function Attributes(props) {
           flexDirection: "row"        
         }}>
           <View>
+            <View>
+              <Text>{text[0].character.inspiration_points}</Text>
+              <TextInput 
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
+                onChangeText={text => {            
+                  setCharacterSet({...characterSet, inspiration_points: text})               
+                }}      
+                value={characterSet.inspiration_points}>            
+              </TextInput>            
+            </View>
+            <View>
+              <Text>{text[0].character.skill_bonus}</Text>
+              <TextInput 
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
+                onChangeText={text => {            
+                  setCharacterSet({...characterSet, skill_bonus: text})               
+                }}      
+                value={characterSet.skill_bonus}>            
+              </TextInput>            
+            </View>
             {characteristics}
           </View>
           <View>
