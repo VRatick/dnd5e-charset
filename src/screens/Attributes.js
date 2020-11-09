@@ -7,7 +7,7 @@ import textForArray from '../assets/textForArray.json';
 import { Checkbox } from 'react-native-ui-lib';
 
 function Attributes(props) {  
-  const [characterSet, setCharacterSet ] = useState(props.characterSet)    
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.attributes)    
   const characteristics = [];
   const saves = [];
   const skills = [];  
@@ -19,14 +19,16 @@ function Attributes(props) {
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})               
+            setCharacterSet({...characterSet, [item]: text})
+            props.changeCharacterParams(characterSet, 'attributes')                   
           }}      
           value={characterSet[item]}>            
         </TextInput>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [`mod_${item}`]: text})               
+            setCharacterSet({...characterSet, [`mod_${item}`]: text})
+            props.changeCharacterParams(characterSet, 'attributes')                   
           }}           
           value={characterSet[`mod_${item}`]}>            
         </TextInput>
@@ -38,11 +40,15 @@ function Attributes(props) {
       }}>
         <Checkbox 
           value={characterSet[`save_${item}_chek`]}
-          onValueChange={value => setCharacterSet({...characterSet, [`save_${item}_chek`]: value})}/>
+          onValueChange={value => {
+            setCharacterSet({...characterSet, [`save_${item}_chek`]: value})
+            props.changeCharacterParams(characterSet, 'attributes')    
+          }}/>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [`save_${item}`]: text})               
+            setCharacterSet({...characterSet, [`save_${item}`]: text})
+            props.changeCharacterParams(characterSet, 'attributes')                   
           }}          
           value={characterSet[`save_${item}`]}>            
         </TextInput>
@@ -58,12 +64,15 @@ function Attributes(props) {
       }}>
         <Checkbox 
           value={characterSet[`${item}_chek`]}
-          onValueChange={value => setCharacterSet({...characterSet, [`${item}_chek`]: value})}/>
+          onValueChange={value => {setCharacterSet({...characterSet, [`${item}_chek`]: value})
+          props.changeCharacterParams(characterSet, 'attributes')    
+          }}/>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}        
           value={characterSet[item]}
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})                      
+            setCharacterSet({...characterSet, [item]: text}) 
+            props.changeCharacterParams(characterSet, 'attributes')                         
           }}>               
         </TextInput>
         <Text>{text[0].character.skills[item]}</Text>        
@@ -82,7 +91,8 @@ function Attributes(props) {
               <TextInput 
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
                 onChangeText={text => {            
-                  setCharacterSet({...characterSet, inspiration_points: text})               
+                  setCharacterSet({...characterSet, inspiration_points: text})
+                  props.changeCharacterParams(characterSet, 'attributes')                   
                 }}      
                 value={characterSet.inspiration_points}>            
               </TextInput>            
@@ -92,7 +102,8 @@ function Attributes(props) {
               <TextInput 
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
                 onChangeText={text => {            
-                  setCharacterSet({...characterSet, skill_bonus: text})               
+                  setCharacterSet({...characterSet, skill_bonus: text})
+                  props.changeCharacterParams(characterSet, 'attributes')                   
                 }}      
                 value={characterSet.skill_bonus}>            
               </TextInput>            
@@ -113,7 +124,7 @@ const mapStateToProps = ( state ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    changeCharacterParams: (charSet) => dispatch(changeParams(charSet)),    
+    changeCharacterParams: (charSet, screen) => dispatch(changeParams(charSet, screen)),    
     
 });
   

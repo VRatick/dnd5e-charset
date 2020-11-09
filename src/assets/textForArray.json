@@ -6,5 +6,5 @@
     "descriptionText": ["age", "height", "weight", "eye_color", "hair_color", "color_of_the_skin"],
     "classText": ["lvl", "class", "pre_history", "history", "worldviewer", "experience_points"],
     "hpText": ["hp_full", "hp_now",  "hp_temporary", "hp_for_lvl"],
-    "armotText": ["armor_class", "initiative", "speed"]
+    "armorText": ["armor_class", "initiative", "speed"]
 }

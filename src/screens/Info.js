@@ -7,7 +7,7 @@ import textForArray from '../assets/textForArray.json';
 import { TextArea } from 'react-native-ui-lib';
 
 function Info(props) {
-  const [characterSet, setCharacterSet ] = useState(props.characterSet);
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.info);
   const info = [];
   const description = [];
   
@@ -23,7 +23,8 @@ function Info(props) {
           placeholder="Write something.."
           
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})               
+            setCharacterSet({...characterSet, [item]: text})
+            props.changeCharacterParams(characterSet, 'info')                   
           }}           
           value={characterSet.item}/> 
       </View>
@@ -41,7 +42,8 @@ function Info(props) {
           placeholder="Write something.."
           
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})                          
+            setCharacterSet({...characterSet, [item]: text})
+            props.changeCharacterParams(characterSet, 'info')                              
           }}           
           value={characterSet.item}/> 
       </View>
@@ -62,7 +64,7 @@ const mapStateToProps = ( state ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    changeCharacterParams: (charSet) => dispatch(changeParams(charSet)),    
+    changeCharacterParams: (charSet, screen) => dispatch(changeParams(charSet, screen)),    
     
 });
   

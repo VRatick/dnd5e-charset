@@ -6,7 +6,7 @@ import text from '../assets/text.json';
 import { TextArea } from 'react-native-ui-lib';
 
 function History(props) {
-  const [characterSet, setCharacterSet ] = useState(props.characterSet)
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.history)
 
     return (
       <View style={{
@@ -16,7 +16,8 @@ function History(props) {
       }}>
         <Text>{text[0].character.history}</Text>
         <TextArea placeholder="Write something.." value={characterSet.history} onChangeText={ (value) => {
-            setCharacterSet({...characterSet, history: value})          
+            setCharacterSet({...characterSet, history: value})
+            props.changeCharacterParams(characterSet, "history")              
           }
         }/>
       </View>
@@ -28,7 +29,7 @@ const mapStateToProps = ( state ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    changeCharacterParams: (charSet) => dispatch(changeParams(charSet)),    
+    changeCharacterParams: (charSet, screen) => dispatch(changeParams(charSet, screen)),    
     
 });
   

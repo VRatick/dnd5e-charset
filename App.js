@@ -17,8 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Character" component={Character} />
+        <Tab.Navigator>          
           <Tab.Screen name="Basic" component={Basic} />
           <Tab.Screen name="Attributes" component={Attributes} />
           <Tab.Screen name="Spells" component={Spells} />

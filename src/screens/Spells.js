@@ -6,7 +6,7 @@ import text from '../assets/text.json';
 import spells from '../assets/spells.json';
 
 function Spells(props) {
-  const [characterSet, setCharacterSet ] = useState(props.characterSet);
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.spells);
   const [content, setContent] = useState({
     "casting_time" : null,
     "components" : null,
@@ -95,6 +95,7 @@ function Spells(props) {
             const conspiraciesList = [...characterSet.conspiracies]
             conspiraciesList[i] = item;
             setCharacterSet({...characterSet, conspiracies: conspiraciesList})
+            props.changeCharacterParams(characterSet, 'spells')                   
           }}
         >
           {options_conspiracies}
@@ -121,7 +122,8 @@ function Spells(props) {
             if (characterSet.conspiracies_count !== 1) {
               const conspiraciesList = [...characterSet.conspiracies]
               conspiraciesList.splice(i, 1);
-              setCharacterSet({...characterSet, conspiracies_count: characterSet.conspiracies_count - 1, conspiracies: conspiraciesList})              
+              setCharacterSet({...characterSet, conspiracies_count: characterSet.conspiracies_count - 1, conspiracies: conspiraciesList})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -142,6 +144,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_1]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_1: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_1}
@@ -168,7 +171,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_1_count !== 1) {
               const list = [...characterSet.spell_lvl_1]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_1_count: characterSet.spell_lvl_1_count - 1, spell_lvl_1: list})              
+              setCharacterSet({...characterSet, spell_lvl_1_count: characterSet.spell_lvl_1_count - 1, spell_lvl_1: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -189,6 +193,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_2]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_2: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_2}
@@ -215,7 +220,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_2_count !== 1) {
               const list = [...characterSet.spell_lvl_2]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_2_count: characterSet.spell_lvl_2_count - 1, spell_lvl_2: list})              
+              setCharacterSet({...characterSet, spell_lvl_2_count: characterSet.spell_lvl_2_count - 1, spell_lvl_2: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -236,6 +242,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_3]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_3: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_3}
@@ -262,7 +269,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_3_count !== 1) {
               const list = [...characterSet.spell_lvl_3]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_3_count: characterSet.spell_lvl_3_count - 1, spell_lvl_3: list})              
+              setCharacterSet({...characterSet, spell_lvl_3_count: characterSet.spell_lvl_3_count - 1, spell_lvl_3: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -283,6 +291,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_4]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_4: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_4}
@@ -309,7 +318,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_4_count !== 1) {
               const list = [...characterSet.spell_lvl_4]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_4_count: characterSet.spell_lvl_4_count - 1, spell_lvl_4: list})              
+              setCharacterSet({...characterSet, spell_lvl_4_count: characterSet.spell_lvl_4_count - 1, spell_lvl_4: list})
+              props.changeCharacterParams(characterSet, 'spells')                  
               }  
           }}          
           title="Delete"
@@ -330,6 +340,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_5]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_5: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_5}
@@ -356,7 +367,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_5_count !== 1) {
               const list = [...characterSet.spell_lvl_5]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_5_count: characterSet.spell_lvl_5_count - 1, spell_lvl_5: list})              
+              setCharacterSet({...characterSet, spell_lvl_5_count: characterSet.spell_lvl_5_count - 1, spell_lvl_5: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -377,6 +389,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_6]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_6: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_6}
@@ -403,7 +416,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_6_count !== 1) {
               const list = [...characterSet.spell_lvl_6]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_6_count: characterSet.spell_lvl_6_count - 1, spell_lvl_6: list})              
+              setCharacterSet({...characterSet, spell_lvl_6_count: characterSet.spell_lvl_6_count - 1, spell_lvl_6: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -424,6 +438,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_7]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_7: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_7}
@@ -450,7 +465,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_7_count !== 1) {
               const list = [...characterSet.spell_lvl_7]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_7_count: characterSet.spell_lvl_7_count - 1, spell_lvl_7: list})              
+              setCharacterSet({...characterSet, spell_lvl_7_count: characterSet.spell_lvl_7_count - 1, spell_lvl_7: list}) 
+              props.changeCharacterParams(characterSet, 'spells')                 
               }  
           }}          
           title="Delete"
@@ -471,6 +487,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_8]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_8: list})
+            props.changeCharacterParams(characterSet, 'spells')    
           }}
         >
           {options_spell_lvl_8}
@@ -497,7 +514,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_8_count !== 1) {
               const list = [...characterSet.spell_lvl_8]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_8_count: characterSet.spell_lvl_8_count - 1, spell_lvl_8: list})              
+              setCharacterSet({...characterSet, spell_lvl_8_count: characterSet.spell_lvl_8_count - 1, spell_lvl_8: list})  
+              props.changeCharacterParams(characterSet, 'spells')                
               }  
           }}          
           title="Delete"
@@ -518,6 +536,7 @@ function Spells(props) {
             const list = [...characterSet.spell_lvl_9]
             list[i] = item;
             setCharacterSet({...characterSet, spell_lvl_9: list})
+            props.changeCharacterParams(characterSet, 'spells')       
           }}
         >
           {options_spell_lvl_9}
@@ -544,7 +563,8 @@ function Spells(props) {
             if (characterSet.spell_lvl_9_count !== 1) {
               const list = [...characterSet.spell_lvl_9]
               list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_9_count: characterSet.spell_lvl_9_count - 1, spell_lvl_9: list})              
+              setCharacterSet({...characterSet, spell_lvl_9_count: characterSet.spell_lvl_9_count - 1, spell_lvl_9: list})  
+              props.changeCharacterParams(characterSet, 'spells')                   
               }  
           }}          
           title="Delete"
@@ -563,7 +583,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, conspiracies_text: text})               
+                setCharacterSet({...characterSet, conspiracies_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                            
               }}      
               value={characterSet.conspiracies_text}>            
             </TextInput> 
@@ -575,6 +596,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(0);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }              
             }}
             title="Add"
@@ -588,7 +610,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_1_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_1_text: text}) 
+                props.changeCharacterParams(characterSet, 'spells')                  
               }}      
               value={characterSet.spell_lvl_1_text}>            
             </TextInput> 
@@ -600,6 +623,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(9);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -613,7 +637,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_2_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_2_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_2_text}>            
             </TextInput> 
@@ -625,6 +650,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(1);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }             
             }}
             title="Add"
@@ -638,7 +664,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_3_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_3_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_3_text}>            
             </TextInput> 
@@ -650,6 +677,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(7);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }              
             }}
             title="Add"
@@ -663,7 +691,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_4_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_4_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_4_text}>            
             </TextInput> 
@@ -675,6 +704,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(3);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -688,7 +718,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_5_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_5_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_5_text}>            
             </TextInput> 
@@ -700,6 +731,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(15);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -713,7 +745,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_6_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_6_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_6_text}>            
             </TextInput> 
@@ -725,6 +758,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(8);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -738,7 +772,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_7_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_7_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_7_text}>            
             </TextInput> 
@@ -750,6 +785,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(23);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -763,7 +799,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_8_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_8_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_8_text}>            
             </TextInput> 
@@ -775,6 +812,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(2);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -788,7 +826,8 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_9_text: text})               
+                setCharacterSet({...characterSet, spell_lvl_9_text: text})
+                props.changeCharacterParams(characterSet, 'spells')                   
               }}      
               value={characterSet.spell_lvl_9_text}>            
             </TextInput> 
@@ -800,6 +839,7 @@ function Spells(props) {
                 const list = [...characterSet.conspiracies];
                 list.push(5);
                 setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
             title="Add"
@@ -842,7 +882,7 @@ const mapStateToProps = ( state ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    changeCharacterParams: (charSet) => dispatch(changeParams(charSet)),    
+    changeCharacterParams: (charSet, screen) => dispatch(changeParams(charSet, screen)),    
     
 });
   

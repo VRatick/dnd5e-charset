@@ -7,7 +7,7 @@ import textForArray from '../assets/textForArray.json';
 import { TextArea } from 'react-native-ui-lib';
 
 function Inventory(props) {
-  const [characterSet, setCharacterSet ] = useState(props.characterSet)
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.inventory)
   const coins = [];
 
   textForArray.coinsText.forEach( (item) => {
@@ -22,7 +22,8 @@ function Inventory(props) {
           placeholder="Write something.."
           
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})               
+            setCharacterSet({...characterSet, [item]: text}) 
+            props.changeCharacterParams(characterSet, 'inventory')                  
           }}           
           value={characterSet.item}/> 
       </View>
@@ -39,7 +40,8 @@ function Inventory(props) {
         }}>
           <Text>{text[0].character.items}</Text>
           <TextArea placeholder="Write something.." value={characterSet.items} onChangeText={ (value) => {
-              setCharacterSet({...characterSet, items: value})                      
+              setCharacterSet({...characterSet, items: value})
+              props.changeCharacterParams(characterSet, 'inventory')                          
             }
           }/>
         </View>
@@ -52,7 +54,7 @@ const mapStateToProps = ( state ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    changeCharacterParams: (charSet) => dispatch(changeParams(charSet)),    
+    changeCharacterParams: (charSet, screen) => dispatch(changeParams(charSet, screen)),    
     
 });
   
