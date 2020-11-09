@@ -620,9 +620,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_1_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_1];
                 list.push(9);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet, spell_lvl_1_count: characterSet.spell_lvl_1_count + 1, spell_lvl_1: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -647,9 +647,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_2_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_2];
                 list.push(1);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet, spell_lvl_2_count: characterSet.spell_lvl_2_count + 1, spell_lvl_2: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }             
             }}
@@ -676,7 +676,7 @@ function Spells(props) {
               if (characterSet.spell_lvl_3_count !== 10) {
                 const list = [...characterSet.conspiracies];
                 list.push(7);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_3_count: characterSet.spell_lvl_3_count + 1, spell_lvl_3: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }              
             }}
@@ -701,9 +701,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_4_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_4];
                 list.push(3);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_4_count: characterSet.spell_lvl_4_count + 1, spell_lvl_4: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -728,9 +728,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_5_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_5];
                 list.push(15);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_5_count: characterSet.spell_lvl_5_count + 1, spell_lvl_5: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -755,9 +755,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_6_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_6];
                 list.push(8);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_6_count: characterSet.spell_lvl_6_count + 1, spell_lvl_6: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -782,9 +782,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_7_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_7];
                 list.push(23);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_7_count: characterSet.spell_lvl_7_count + 1, spell_lvl_7: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -809,9 +809,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_8_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_8];
                 list.push(2);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_8_count: characterSet.spell_lvl_8_count + 1, spell_lvl_8: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
@@ -836,9 +836,9 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_9_count !== 10) {
-                const list = [...characterSet.conspiracies];
+                const list = [...characterSet.spell_lvl_9];
                 list.push(5);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
+                setCharacterSet({...characterSet,spell_lvl_9_count: characterSet.spell_lvl_9_count + 1, spell_lvl_9: list})
                 props.changeCharacterParams(characterSet, 'spells')    
               }               
             }}
