@@ -108,34 +108,45 @@ const initialState = {
         caster_characteristic: null,
         spell_throw: null,
         spell_attack_bonus: null,
-        conspiracies: null,
-        conspiracies_count: null,
-        spell_lvl_1: null,
+        conspiracies: [0],
+        conspiracies_count: 1,
+        conspiracies_text: null,
+        spell_lvl_1: [9],
         spell_lvl_1_count: 1,
-        spell_lvl_2: null,
+        spell_lvl_1_text: null,
+        spell_lvl_2: [1],
         spell_lvl_2_count: 1,
-        spell_lvl_3: null,
+        spell_lvl_2_text: null,
+        spell_lvl_3: [7],
         spell_lvl_3_count: 1,
-        spell_lvl_4: null,
+        spell_lvl_3_text: null,
+        spell_lvl_4: [3],
         spell_lvl_4_count: 1,
-        spell_lvl_5: null,
+        spell_lvl_4_text: null,
+        spell_lvl_5: [15],
         spell_lvl_5_count: 1,
-        spell_lvl_6: null,
+        spell_lvl_5_text: null,
+        spell_lvl_6: [8],
         spell_lvl_6_count: 1,
-        spell_lvl_7: null,
+        spell_lvl_6_text: null,
+        spell_lvl_7: [23],
         spell_lvl_7_count: 1,
-        spell_lvl_8: null,
+        spell_lvl_7_text: null,
+        spell_lvl_8: [2],
         spell_lvl_8_count: 1,
-        spell_lvl_9: null,
+        spell_lvl_8_text: null,
+        spell_lvl_9: [5],
         spell_lvl_9_count: 1,
+        spell_lvl_9_text: null,
     },    
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_PARAMS: {
-            const { characterParams } = action;                                
-            return { ...state, characterParams };
+            const { characterParams } = action;
+            const characterSet = {...characterParams}                             
+            return { ...state, characterSet };
         }          
         default: {
             return state;
