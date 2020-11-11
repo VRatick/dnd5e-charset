@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { changeParams } from '../redux/actions/charset';
@@ -8,6 +8,11 @@ import { TextArea } from 'react-native-ui-lib';
 function History(props) {
   const [characterSet, setCharacterSet ] = useState(props.characterSet.history)
 
+  const changeChar = (value) => {                   
+    setCharacterSet({...characterSet, history: value})            
+    props.changeCharacterParams(characterSet, "history")              
+  }
+
     return (
       <View style={{
         height: '100%',
@@ -15,11 +20,17 @@ function History(props) {
         padding: 10,        
       }}>
         <Text>{text[0].character.history}</Text>
-        <TextArea placeholder="Write something.." value={characterSet.history} onChangeText={ (value) => {
-            setCharacterSet({...characterSet, history: value})
-            props.changeCharacterParams(characterSet, "history")              
-          }
-        }/>
+        <TextArea placeholder="Write something.." 
+        value={characterSet.history} 
+        onChangeText={ 
+          (value) => {                   
+            changeChar(value)
+        }}
+        onBlur={
+          (value) => {
+            changeChar(value)
+        }}
+        />
       </View>
     );
   }

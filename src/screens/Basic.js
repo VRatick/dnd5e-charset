@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, ScrollView, Button, AsyncStorage } from 'react-native';
+import { Text, View, TextInput, ScrollView, Button} from 'react-native';
 import { connect } from 'react-redux';
 import { changeParams } from '../redux/actions/charset';
 import text from '../assets/text.json';
 import textForArray from '../assets/textForArray.json';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Basic(props) {
   const [characterSet, setCharacterSet ] = useState(props.characterSet.basic);
@@ -17,7 +18,8 @@ function Basic(props) {
     try {
       const value = await AsyncStorage.getItem('CHARSET');
       if (value !== null) {
-        props.changeCharacterParams(JSON.parse(value), false)
+        props.changeCharacterParams(JSON.parse(value), false)  
+        setCharacterSet(JSON.parse(value).basic)     
         setFirstLaunch(false);            
       }
     } catch (error) {
@@ -102,49 +104,55 @@ function Basic(props) {
         </TextInput>        
       </View>
     )
-  })      
-    return (
-      <ScrollView>
+  })
+  const content = (
+    <ScrollView>
+      <View>
         <View>
-          <View>
-            <Text>{text[0].character.name}</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                setCharacterSet({...characterSet, name: text})
-                props.changeCharacterParams(characterSet, 'basic')                   
-              }}      
-              value={characterSet.name}>            
-            </TextInput>
-          </View>
-          <View>
-            {classes}
-          </View>
-          <View style={{
-          flexDirection: "row"        
-        }}>
-            {armor}
-          </View>
-          <View>
-            {hp}
-          </View>
-          <View>
-            <Text>{text[0].character.weapon}</Text>
-            {weapons}
-            <Button
-            onPress={() => {
-              if (characterSet.weapon_count !== 5) {
-              setCharacterSet({...characterSet, weapon_count: characterSet.weapon_count + 1})
-              props.changeCharacterParams(characterSet, 'basic')    
-              }              
-            }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
-          />  
-          </View>          
+          <Text>{text[0].character.name}</Text>
+          <TextInput 
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
+            onChangeText={text => {            
+              setCharacterSet({...characterSet, name: text})
+              props.changeCharacterParams(characterSet, 'basic')                   
+            }}      
+            value={characterSet.name}>            
+          </TextInput>
         </View>
-      </ScrollView>
+        <View>
+          {classes}
+        </View>
+        <View style={{
+        flexDirection: "row"        
+      }}>
+          {armor}
+        </View>
+        <View>
+          {hp}
+        </View>
+        <View>
+          <Text>{text[0].character.weapon}</Text>
+          {weapons}
+          <Button
+          onPress={() => {
+            if (characterSet.weapon_count !== 5) {
+            setCharacterSet({...characterSet, weapon_count: characterSet.weapon_count + 1})
+            props.changeCharacterParams(characterSet, 'basic')    
+            }              
+          }}
+          title="Add"
+          color="green"
+          accessibilityLabel="Learn more about this purple button"
+        />  
+        </View>          
+      </View>
+    </ScrollView>
+    )
+  
+    return (
+      <View>
+        {firstLaunch ? null : content}
+      </View>
     );
   }
 

@@ -2,7 +2,7 @@ import {
     CHANGE_PARAMS    
   } from '../constants/charset';
 
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
   
 const initialState = {
     characterSet: {
@@ -167,21 +167,23 @@ export default (state = initialState, action) => {
             const { characterParams } = action;
             const { screen } = action; 
             let characterSet;
+            
             if (screen) {  
-                characterSet = {...initialState.characterSet}             
+                characterSet = state.characterSet                  
                 characterSet[screen] = characterParams;
+                try {
+                    AsyncStorage.setItem(
+                      'CHARSET',
+                      JSON.stringify(characterSet)
+                    );
+                  } catch (error) {
+                    console.log(error)
+                }    
             }
             else {
-                characterSet = {...characterParams}  
-            }
-            try {
-                AsyncStorage.setItem(
-                  'CHARSET',
-                  JSON.stringify(characterSet)
-                );
-              } catch (error) {
-                console.log(error)
-              }                     
+                characterSet = characterParams  
+            }           
+                          
             return { ...state, characterSet};
         }          
         default: {

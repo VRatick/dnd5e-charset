@@ -25,7 +25,7 @@ function Inventory(props) {
             setCharacterSet({...characterSet, [item]: text}) 
             props.changeCharacterParams(characterSet, 'inventory')                  
           }}           
-          value={characterSet.item}/> 
+          value={characterSet[item]}/> 
       </View>
     )
   })

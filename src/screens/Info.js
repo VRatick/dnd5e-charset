@@ -10,6 +10,7 @@ function Info(props) {
   const [characterSet, setCharacterSet ] = useState(props.characterSet.info);
   const info = [];
   const description = [];
+  console.log(characterSet);
   
   textForArray.infoText.forEach( (item) => {
     info.push(
@@ -26,7 +27,7 @@ function Info(props) {
             setCharacterSet({...characterSet, [item]: text})
             props.changeCharacterParams(characterSet, 'info')                   
           }}           
-          value={characterSet.item}/> 
+          value={characterSet[item]}/> 
       </View>
     )
   })
@@ -45,7 +46,7 @@ function Info(props) {
             setCharacterSet({...characterSet, [item]: text})
             props.changeCharacterParams(characterSet, 'info')                              
           }}           
-          value={characterSet.item}/> 
+          value={characterSet[item]}/> 
       </View>
     )
   })
