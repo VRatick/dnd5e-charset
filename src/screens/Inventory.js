@@ -19,11 +19,12 @@ function Inventory(props) {
       }}>
         <Text>{text[0].character[item]}</Text>        
         <TextArea
-          placeholder="Write something.."
-          
-          onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text}) 
-            props.changeCharacterParams(characterSet, 'inventory')                  
+          placeholder="Write something.."          
+          onChangeText={text => {
+            const charset = {...characterSet};
+            charset[item] = text;                       
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'inventory')                  
           }}           
           value={characterSet[item]}/> 
       </View>
@@ -39,9 +40,11 @@ function Inventory(props) {
           padding: 10,        
         }}>
           <Text>{text[0].character.items}</Text>
-          <TextArea placeholder="Write something.." value={characterSet.items} onChangeText={ (value) => {
-              setCharacterSet({...characterSet, items: value})
-              props.changeCharacterParams(characterSet, 'inventory')                          
+          <TextArea placeholder="Write something.." value={characterSet.items} onChangeText={ (text) => {
+              const charset = {...characterSet};
+              charset.items = text;                       
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'inventory')                             
             }
           }/>
         </View>

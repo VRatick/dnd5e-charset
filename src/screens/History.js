@@ -6,12 +6,7 @@ import text from '../assets/text.json';
 import { TextArea } from 'react-native-ui-lib';
 
 function History(props) {
-  const [characterSet, setCharacterSet ] = useState(props.characterSet.history)
-
-  const changeChar = (value) => {                   
-    setCharacterSet({...characterSet, history: value})            
-    props.changeCharacterParams(characterSet, "history")              
-  }
+  const [characterSet, setCharacterSet ] = useState(props.characterSet.history)  
 
     return (
       <View style={{
@@ -23,13 +18,12 @@ function History(props) {
         <TextArea placeholder="Write something.." 
         value={characterSet.history} 
         onChangeText={ 
-          (value) => {                   
-            changeChar(value)
-        }}
-        onBlur={
-          (value) => {
-            changeChar(value)
-        }}
+          (text) => {                   
+            const charset = {...characterSet};
+            charset.history = text;                       
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'history')      
+        }}        
         />
       </View>
     );

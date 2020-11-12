@@ -36,22 +36,23 @@ function Basic(props) {
       <View key={i+1}>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-          onChangeText={text => {   
-            const weapon = [...characterSet.weapon]
-            weapon[i] = text;         
-            setCharacterSet({...characterSet, weapon: weapon})
-            props.changeCharacterParams(characterSet, 'basic')                 
+          onChangeText={text => {
+            const charset = {...characterSet};  
+            charset.weapon[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'basic')             
           }}      
           value={characterSet.weapon[i]}>            
         </TextInput>
         <Button
           onPress={ () => {
             if (characterSet.weapon_count !== 1) {
-              const weapon = [...characterSet.weapon]
-              weapon.splice(i, 1);
-              setCharacterSet({...characterSet, weapon_count: characterSet.weapon_count - 1, weapon: weapon})
-              props.changeCharacterParams(characterSet, 'basic')                  
-              }  
+              const charset = {...characterSet};  
+              charset.weapon.splice(i, 1);
+              charset.weapon_count = charset.weapon_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'basic')                  
+            }  
           }}          
           title="Delete"
           color="red"
@@ -66,9 +67,11 @@ function Basic(props) {
         <Text>{text[0].character[item]}</Text>
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-          onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})
-            props.changeCharacterParams(characterSet, 'basic')                   
+          onChangeText={text => {
+            const charset = {...characterSet};  
+            charset[item] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'basic')   
           }}      
           value={characterSet[item]}>            
         </TextInput>        
@@ -82,8 +85,10 @@ function Basic(props) {
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})
-            props.changeCharacterParams(characterSet, 'basic')                   
+            const charset = {...characterSet};  
+            charset[item] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'basic')                  
           }}      
           value={characterSet[item]}>            
         </TextInput>        
@@ -97,8 +102,10 @@ function Basic(props) {
         <TextInput 
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})
-            props.changeCharacterParams(characterSet, 'basic')                   
+            const charset = {...characterSet};  
+            charset[item] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'basic')                
           }}      
           value={characterSet[item]}>            
         </TextInput>        
@@ -112,7 +119,11 @@ function Basic(props) {
           <Text>{text[0].character.name}</Text>
           <TextInput 
             style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-            onChangeText={text => {            
+            onChangeText={text => {   
+              const charset = {...characterSet};  
+            charset.name = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'basic')           
               setCharacterSet({...characterSet, name: text})
               props.changeCharacterParams(characterSet, 'basic')                   
             }}      
@@ -136,8 +147,10 @@ function Basic(props) {
           <Button
           onPress={() => {
             if (characterSet.weapon_count !== 5) {
-            setCharacterSet({...characterSet, weapon_count: characterSet.weapon_count + 1})
-            props.changeCharacterParams(characterSet, 'basic')    
+              const charset = {...characterSet};  
+              charset.weapon_count = charset.weapon_count + 1;         
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'basic') 
             }              
           }}
           title="Add"

@@ -91,11 +91,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.conspiracies[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const conspiraciesList = [...characterSet.conspiracies]
-            conspiraciesList[i] = item;
-            setCharacterSet({...characterSet, conspiracies: conspiraciesList})
-            props.changeCharacterParams(characterSet, 'spells')                   
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.conspiracies[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')  
           }}
         >
           {options_conspiracies}
@@ -120,10 +120,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.conspiracies_count !== 1) {
-              const conspiraciesList = [...characterSet.conspiracies]
-              conspiraciesList.splice(i, 1);
-              setCharacterSet({...characterSet, conspiracies_count: characterSet.conspiracies_count - 1, conspiracies: conspiraciesList})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.conspiracies.splice(i, 1);
+              charset.conspiracies_count = charset.conspiracies_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')
               }  
           }}          
           title="Delete"
@@ -140,11 +141,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_1[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_1]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_1: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_1[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')             
           }}
         >
           {options_spell_lvl_1}
@@ -169,10 +170,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_1_count !== 1) {
-              const list = [...characterSet.spell_lvl_1]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_1_count: characterSet.spell_lvl_1_count - 1, spell_lvl_1: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_1.splice(i, 1);
+              charset.spell_lvl_1_count = charset.spell_lvl_1_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                            
               }  
           }}          
           title="Delete"
@@ -189,11 +191,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_2[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_2]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_2: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_2[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells') 
           }}
         >
           {options_spell_lvl_2}
@@ -218,10 +220,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_2_count !== 1) {
-              const list = [...characterSet.spell_lvl_2]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_2_count: characterSet.spell_lvl_2_count - 1, spell_lvl_2: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_2.splice(i, 1);
+              charset.spell_lvl_2_count = charset.spell_lvl_2_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
           title="Delete"
@@ -238,11 +241,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_3[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_3]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_3: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_3[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')   
           }}
         >
           {options_spell_lvl_3}
@@ -267,10 +270,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_3_count !== 1) {
-              const list = [...characterSet.spell_lvl_3]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_3_count: characterSet.spell_lvl_3_count - 1, spell_lvl_3: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_3.splice(i, 1);
+              charset.spell_lvl_3_count = charset.spell_lvl_3_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                
               }  
           }}          
           title="Delete"
@@ -287,11 +291,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_4[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_4]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_4: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_4[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')    
           }}
         >
           {options_spell_lvl_4}
@@ -316,10 +320,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_4_count !== 1) {
-              const list = [...characterSet.spell_lvl_4]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_4_count: characterSet.spell_lvl_4_count - 1, spell_lvl_4: list})
-              props.changeCharacterParams(characterSet, 'spells')                  
+              const charset = {...characterSet};  
+              charset.spell_lvl_4.splice(i, 1);
+              charset.spell_lvl_4_count = charset.spell_lvl_4_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                   
               }  
           }}          
           title="Delete"
@@ -336,11 +341,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_5[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_5]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_5: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_5[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')    
           }}
         >
           {options_spell_lvl_5}
@@ -365,10 +370,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_5_count !== 1) {
-              const list = [...characterSet.spell_lvl_5]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_5_count: characterSet.spell_lvl_5_count - 1, spell_lvl_5: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_5.splice(i, 1);
+              charset.spell_lvl_5_count = charset.spell_lvl_5_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
           title="Delete"
@@ -385,11 +391,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_6[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_6]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_6: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_6[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')    
           }}
         >
           {options_spell_lvl_6}
@@ -414,10 +420,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_6_count !== 1) {
-              const list = [...characterSet.spell_lvl_6]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_6_count: characterSet.spell_lvl_6_count - 1, spell_lvl_6: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_6.splice(i, 1);
+              charset.spell_lvl_6_count = charset.spell_lvl_6_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
           title="Delete"
@@ -434,11 +441,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_7[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_7]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_7: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_7[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')    
           }}
         >
           {options_spell_lvl_7}
@@ -463,10 +470,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_7_count !== 1) {
-              const list = [...characterSet.spell_lvl_7]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_7_count: characterSet.spell_lvl_7_count - 1, spell_lvl_7: list}) 
-              props.changeCharacterParams(characterSet, 'spells')                 
+              const charset = {...characterSet};  
+              charset.spell_lvl_7.splice(i, 1);
+              charset.spell_lvl_7_count = charset.spell_lvl_7_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                   
               }  
           }}          
           title="Delete"
@@ -483,11 +491,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_8[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_8]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_8: list})
-            props.changeCharacterParams(characterSet, 'spells')    
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_8[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells') 
           }}
         >
           {options_spell_lvl_8}
@@ -512,10 +520,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_8_count !== 1) {
-              const list = [...characterSet.spell_lvl_8]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_8_count: characterSet.spell_lvl_8_count - 1, spell_lvl_8: list})  
-              props.changeCharacterParams(characterSet, 'spells')                
+              const charset = {...characterSet};  
+              charset.spell_lvl_8.splice(i, 1);
+              charset.spell_lvl_8_count = charset.spell_lvl_8_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                  
               }  
           }}          
           title="Delete"
@@ -532,11 +541,11 @@ function Spells(props) {
         <Picker
           selectedValue={characterSet.spell_lvl_9[i]}
           style={{ height: 50, width: 150 }}
-          onValueChange={ ( item ) => {
-            const list = [...characterSet.spell_lvl_9]
-            list[i] = item;
-            setCharacterSet({...characterSet, spell_lvl_9: list})
-            props.changeCharacterParams(characterSet, 'spells')       
+          onValueChange={ ( text ) => {
+            const charset = {...characterSet};  
+            charset.spell_lvl_9[i] = text;         
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'spells')        
           }}
         >
           {options_spell_lvl_9}
@@ -561,10 +570,11 @@ function Spells(props) {
         <Button
           onPress={ () => {
             if (characterSet.spell_lvl_9_count !== 1) {
-              const list = [...characterSet.spell_lvl_9]
-              list.splice(i, 1);
-              setCharacterSet({...characterSet, spell_lvl_9_count: characterSet.spell_lvl_9_count - 1, spell_lvl_9: list})  
-              props.changeCharacterParams(characterSet, 'spells')                   
+              const charset = {...characterSet};  
+              charset.spell_lvl_9.splice(i, 1);
+              charset.spell_lvl_9_count = charset.spell_lvl_9_count - 1
+              setCharacterSet(charset)            
+              props.changeCharacterParams(charset, 'spells')                      
               }  
           }}          
           title="Delete"
@@ -582,9 +592,11 @@ function Spells(props) {
             <Text>Conspiracies</Text>
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                setCharacterSet({...characterSet, conspiracies_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                            
+              onChangeText={text => {    
+                const charset = {...characterSet}; 
+                charset.conspiracies_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')  
               }}      
               value={characterSet.conspiracies_text}>            
             </TextInput> 
@@ -593,10 +605,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.conspiracies_count !== 10) {
-                const list = [...characterSet.conspiracies];
-                list.push(0);
-                setCharacterSet({...characterSet,conspiracies_count: characterSet.conspiracies_count + 1, conspiracies: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.conspiracies.push(0);
+                charset.conspiracies_count = charset.conspiracies_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells') 
               }              
             }}
             title="Add"
@@ -609,9 +622,11 @@ function Spells(props) {
             <Text>Spell lvl 1</Text>
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_1_text: text}) 
-                props.changeCharacterParams(characterSet, 'spells')                  
+              onChangeText={text => { 
+                const charset = {...characterSet}; 
+                charset.spell_lvl_1_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                  
               }}      
               value={characterSet.spell_lvl_1_text}>            
             </TextInput> 
@@ -620,10 +635,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_1_count !== 10) {
-                const list = [...characterSet.spell_lvl_1];
-                list.push(9);
-                setCharacterSet({...characterSet, spell_lvl_1_count: characterSet.spell_lvl_1_count + 1, spell_lvl_1: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_1.push(9);
+                charset.spell_lvl_1_count = charset.cspell_lvl_1_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells') 
               }               
             }}
             title="Add"
@@ -637,8 +653,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_2_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_2_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                  
               }}      
               value={characterSet.spell_lvl_2_text}>            
             </TextInput> 
@@ -647,10 +665,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_2_count !== 10) {
-                const list = [...characterSet.spell_lvl_2];
-                list.push(1);
-                setCharacterSet({...characterSet, spell_lvl_2_count: characterSet.spell_lvl_2_count + 1, spell_lvl_2: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_2.push(1);
+                charset.spell_lvl_2_count = charset.cspell_lvl_2_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')  
               }             
             }}
             title="Add"
@@ -664,8 +683,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_3_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_3_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                  
               }}      
               value={characterSet.spell_lvl_3_text}>            
             </TextInput> 
@@ -674,10 +695,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_3_count !== 10) {
-                const list = [...characterSet.conspiracies];
-                list.push(7);
-                setCharacterSet({...characterSet,spell_lvl_3_count: characterSet.spell_lvl_3_count + 1, spell_lvl_3: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_3.push(7);
+                charset.spell_lvl_3_count = charset.cspell_lvl_3_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')   
               }              
             }}
             title="Add"
@@ -691,8 +713,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_4_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_4_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')               
               }}      
               value={characterSet.spell_lvl_4_text}>            
             </TextInput> 
@@ -701,10 +725,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_4_count !== 10) {
-                const list = [...characterSet.spell_lvl_4];
-                list.push(3);
-                setCharacterSet({...characterSet,spell_lvl_4_count: characterSet.spell_lvl_4_count + 1, spell_lvl_4: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_4.push(3);
+                charset.spell_lvl_4_count = charset.cspell_lvl_4_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells') 
               }               
             }}
             title="Add"
@@ -718,8 +743,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_5_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_5_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')               
               }}      
               value={characterSet.spell_lvl_5_text}>            
             </TextInput> 
@@ -728,10 +755,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_5_count !== 10) {
-                const list = [...characterSet.spell_lvl_5];
-                list.push(15);
-                setCharacterSet({...characterSet,spell_lvl_5_count: characterSet.spell_lvl_5_count + 1, spell_lvl_5: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_5.push(15);
+                charset.spell_lvl_5_count = charset.cspell_lvl_5_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')
               }               
             }}
             title="Add"
@@ -745,8 +773,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_6_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_6_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                
               }}      
               value={characterSet.spell_lvl_6_text}>            
             </TextInput> 
@@ -755,10 +785,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_6_count !== 10) {
-                const list = [...characterSet.spell_lvl_6];
-                list.push(8);
-                setCharacterSet({...characterSet,spell_lvl_6_count: characterSet.spell_lvl_6_count + 1, spell_lvl_6: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_6.push(8);
+                charset.spell_lvl_6_count = charset.cspell_lvl_6_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')    
               }               
             }}
             title="Add"
@@ -772,8 +803,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_7_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_7_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                  
               }}      
               value={characterSet.spell_lvl_7_text}>            
             </TextInput> 
@@ -782,10 +815,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_7_count !== 10) {
-                const list = [...characterSet.spell_lvl_7];
-                list.push(23);
-                setCharacterSet({...characterSet,spell_lvl_7_count: characterSet.spell_lvl_7_count + 1, spell_lvl_7: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_7.push(23);
+                charset.spell_lvl_7_count = charset.cspell_lvl_7_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')    
               }               
             }}
             title="Add"
@@ -799,8 +833,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_8_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_8_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                 
               }}      
               value={characterSet.spell_lvl_8_text}>            
             </TextInput> 
@@ -809,10 +845,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_8_count !== 10) {
-                const list = [...characterSet.spell_lvl_8];
-                list.push(2);
-                setCharacterSet({...characterSet,spell_lvl_8_count: characterSet.spell_lvl_8_count + 1, spell_lvl_8: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_8.push(2);
+                charset.spell_lvl_8_count = charset.cspell_lvl_8_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')   
               }               
             }}
             title="Add"
@@ -826,8 +863,10 @@ function Spells(props) {
             <TextInput 
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
               onChangeText={text => {            
-                setCharacterSet({...characterSet, spell_lvl_9_text: text})
-                props.changeCharacterParams(characterSet, 'spells')                   
+                const charset = {...characterSet}; 
+                charset.spell_lvl_9_text = text
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')                
               }}      
               value={characterSet.spell_lvl_9_text}>            
             </TextInput> 
@@ -836,10 +875,11 @@ function Spells(props) {
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_9_count !== 10) {
-                const list = [...characterSet.spell_lvl_9];
-                list.push(5);
-                setCharacterSet({...characterSet,spell_lvl_9_count: characterSet.spell_lvl_9_count + 1, spell_lvl_9: list})
-                props.changeCharacterParams(characterSet, 'spells')    
+                const charset = {...characterSet}; 
+                charset.spell_lvl_9.push(5);
+                charset.spell_lvl_9_count = charset.cspell_lvl_9_count + 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')
               }               
             }}
             title="Add"

@@ -9,8 +9,7 @@ import { TextArea } from 'react-native-ui-lib';
 function Info(props) {
   const [characterSet, setCharacterSet ] = useState(props.characterSet.info);
   const info = [];
-  const description = [];
-  console.log(characterSet);
+  const description = [];  
   
   textForArray.infoText.forEach( (item) => {
     info.push(
@@ -24,8 +23,10 @@ function Info(props) {
           placeholder="Write something.."
           
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})
-            props.changeCharacterParams(characterSet, 'info')                   
+            const charset = {...characterSet};
+            charset[item] = text;                       
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'info')                      
           }}           
           value={characterSet[item]}/> 
       </View>
@@ -43,8 +44,10 @@ function Info(props) {
           placeholder="Write something.."
           
           onChangeText={text => {            
-            setCharacterSet({...characterSet, [item]: text})
-            props.changeCharacterParams(characterSet, 'info')                              
+            const charset = {...characterSet};
+            charset[item] = text;                       
+            setCharacterSet(charset)            
+            props.changeCharacterParams(charset, 'info')                            
           }}           
           value={characterSet[item]}/> 
       </View>
