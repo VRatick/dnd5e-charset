@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { Text, View, Picker, ScrollView, Button, TouchableHighlight, Modal, TextInput  } from 'react-native';
+import { Text, View, Picker, ScrollView, TouchableHighlight, Modal, TextInput, StyleSheet, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import { changeParams } from '../redux/actions/charset';
 import text from '../assets/text.json';
 import spells from '../assets/spells.json';
+import { style } from '../styles/spells';
+import title from '../assets/images/scroll_list.png'
+import { Button } from 'react-native-ui-lib';
+
+const styles = StyleSheet.create(style)
 
 function Spells(props) {
   const [characterSet, setCharacterSet ] = useState(props.characterSet.spells);
@@ -50,7 +55,7 @@ function Spells(props) {
     school: spells[0].spells[key].school
     }
     spellList.push(spell);
-  }  
+  } 
 
   spellList.forEach( (item, index) => {
     if (item.level === 0) {
@@ -87,10 +92,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.conspiracies_count; i++) {
     conspiracies.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.conspiracies[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.conspiracies[i] = text;         
@@ -100,47 +105,55 @@ function Spells(props) {
         >
           {options_conspiracies}
         </Picker>
-        <Button
-          onPress={ () => {            
-            setContent({...content, 
-              "casting_time": spellList[characterSet.conspiracies[i]].casting_time,
-              "components" : spellList[characterSet.conspiracies[i]].components,
-              "description" : spellList[characterSet.conspiracies[i]].description,
-              "duration" : spellList[characterSet.conspiracies[i]].duration,
-              "level" : spellList[characterSet.conspiracies[i]].level,
-              "range" : spellList[characterSet.conspiracies[i]].range,
-              "school" : spellList[characterSet.conspiracies[i]].school
-            })
-            setShowModal(true)            
-          }}                   
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
-        />    
-        <Button
-          onPress={ () => {
-            if (characterSet.conspiracies_count !== 1) {
-              const charset = {...characterSet};  
-              charset.conspiracies.splice(i, 1);
-              charset.conspiracies_count = charset.conspiracies_count - 1
-              setCharacterSet(charset)            
-              props.changeCharacterParams(charset, 'spells')
-              }  
-          }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
-        />    
+        <View style={styles.flex}>
+          <Button
+            onPress={ () => {            
+              setContent({...content, 
+                "casting_time": spellList[characterSet.conspiracies[i]].casting_time,
+                "components" : spellList[characterSet.conspiracies[i]].components,
+                "description" : spellList[characterSet.conspiracies[i]].description,
+                "duration" : spellList[characterSet.conspiracies[i]].duration,
+                "level" : spellList[characterSet.conspiracies[i]].level,
+                "range" : spellList[characterSet.conspiracies[i]].range,
+                "school" : spellList[characterSet.conspiracies[i]].school
+              })
+              setShowModal(true)            
+            }}                   
+            label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
+          />    
+          <Button
+            onPress={ () => {
+              if (characterSet.conspiracies_count !== 1) {
+                const charset = {...characterSet};  
+                charset.conspiracies.splice(i, 1);
+                charset.conspiracies_count = charset.conspiracies_count - 1
+                setCharacterSet(charset)            
+                props.changeCharacterParams(charset, 'spells')
+                }  
+            }}          
+            label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
+          />
+        </View>    
       </View>
     )
   }
 
   for (let i = 0; i < characterSet.spell_lvl_1_count; i++) {
     spell_lvl_1.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_1[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_1[i] = text;         
@@ -163,9 +176,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                              
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -177,9 +193,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                            
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -187,10 +206,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_2_count; i++) {
     spell_lvl_2.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_2[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_2[i] = text;         
@@ -213,9 +232,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                              
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -227,9 +249,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+          backgroundColor="#A99073"
+          color="black"            
+          labelStyle={{fontWeight: '700'}}
+          size='xSmall'
+          style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -237,10 +262,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_3_count; i++) {
     spell_lvl_3.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_3[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_3[i] = text;         
@@ -263,9 +288,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                             
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -277,9 +305,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -287,10 +318,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_4_count; i++) {
     spell_lvl_4.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_4[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_4[i] = text;         
@@ -313,9 +344,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                             
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -327,9 +361,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                   
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -337,10 +374,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_5_count; i++) {
     spell_lvl_5.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_5[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_5[i] = text;         
@@ -363,9 +400,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                            
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -377,9 +417,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+          backgroundColor="#A99073"
+          color="black"            
+          labelStyle={{fontWeight: '700'}}
+          size='xSmall'
+          style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -387,10 +430,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_6_count; i++) {
     spell_lvl_6.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_6[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_6[i] = text;         
@@ -413,9 +456,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                             
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -427,9 +473,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                 
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+          backgroundColor="#A99073"
+          color="black"            
+          labelStyle={{fontWeight: '700'}}
+          size='xSmall'
+          style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -437,10 +486,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_7_count; i++) {
     spell_lvl_7.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_7[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_7[i] = text;         
@@ -463,9 +512,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                             
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -477,9 +529,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                   
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+          backgroundColor="#A99073"
+          color="black"            
+          labelStyle={{fontWeight: '700'}}
+          size='xSmall'
+          style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -487,10 +542,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_8_count; i++) {
     spell_lvl_8.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_8[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_8[i] = text;         
@@ -513,9 +568,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                              
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -527,9 +585,12 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                  
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
       </View>
     )
@@ -537,10 +598,10 @@ function Spells(props) {
 
   for (let i = 0; i < characterSet.spell_lvl_9_count; i++) {
     spell_lvl_9.push(
-      <View key={i+1}>
+      <View key={i+1} style={styles.flex}>
         <Picker
           selectedValue={characterSet.spell_lvl_9[i]}
-          style={{ height: 50, width: 150 }}
+          style={styles.picker}
           onValueChange={ ( text ) => {
             const charset = {...characterSet};  
             charset.spell_lvl_9[i] = text;         
@@ -563,9 +624,12 @@ function Spells(props) {
             })
             setShowModal(true)            
           }}                             
-          title="Info"
-          color="yellow"
-          accessibilityLabel="Learn more about this purple button"
+          label="!"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
         <Button
           onPress={ () => {
@@ -577,30 +641,36 @@ function Spells(props) {
               props.changeCharacterParams(charset, 'spells')                      
               }  
           }}          
-          title="Delete"
-          color="red"
-          accessibilityLabel="Learn more about this purple button"
+          label="X"
+            backgroundColor="#A99073"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}
+            size='xSmall'
+            style={{borderWidth: 1}}
         />    
       </View>
     )
   }
 
     return (
-      <ScrollView>
-        <View>
-          <View>
-            <Text>Conspiracies</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {    
-                const charset = {...characterSet}; 
-                charset.conspiracies_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')  
-              }}      
-              value={characterSet.conspiracies_text}>            
-            </TextInput> 
-          </View>
+      <ScrollView style={styles.background}>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Conspiracies</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8}  
+                onChangeText={text => {    
+                  const charset = {...characterSet}; 
+                  charset.conspiracies_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')  
+                }}      
+                value={characterSet.conspiracies_text}>            
+              </TextInput>
+            </View>
+          </ImageBackground> 
           {conspiracies}
           <Button
             onPress={() => {
@@ -612,279 +682,326 @@ function Spells(props) {
                 props.changeCharacterParams(charset, 'spells') 
               }              
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 1</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => { 
-                const charset = {...characterSet}; 
-                charset.spell_lvl_1_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                  
-              }}      
-              value={characterSet.spell_lvl_1_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 1</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => { 
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_1_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                  
+                }}      
+                value={characterSet.spell_lvl_1_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_1}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_1_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_1.push(9);
-                charset.spell_lvl_1_count = charset.cspell_lvl_1_count + 1
+                charset.spell_lvl_1_count = charset.spell_lvl_1_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells') 
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 2</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_2_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                  
-              }}      
-              value={characterSet.spell_lvl_2_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 2</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_2_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                  
+                }}      
+                value={characterSet.spell_lvl_2_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground> 
           {spell_lvl_2}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_2_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_2.push(1);
-                charset.spell_lvl_2_count = charset.cspell_lvl_2_count + 1
+                charset.spell_lvl_2_count = charset.spell_lvl_2_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')  
               }             
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 3</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_3_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                  
-              }}      
-              value={characterSet.spell_lvl_3_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 3</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_3_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                  
+                }}      
+                value={characterSet.spell_lvl_3_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_3}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_3_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_3.push(7);
-                charset.spell_lvl_3_count = charset.cspell_lvl_3_count + 1
+                charset.spell_lvl_3_count = charset.spell_lvl_3_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')   
               }              
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 4</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_4_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')               
-              }}      
-              value={characterSet.spell_lvl_4_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 4</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_4_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')               
+                }}      
+                value={characterSet.spell_lvl_4_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_4}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_4_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_4.push(3);
-                charset.spell_lvl_4_count = charset.cspell_lvl_4_count + 1
+                charset.spell_lvl_4_count = charset.spell_lvl_4_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells') 
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 5</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_5_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')               
-              }}      
-              value={characterSet.spell_lvl_5_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 5</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_5_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')               
+                }}      
+                value={characterSet.spell_lvl_5_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_5}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_5_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_5.push(15);
-                charset.spell_lvl_5_count = charset.cspell_lvl_5_count + 1
+                charset.spell_lvl_5_count = charset.spell_lvl_5_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 6</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_6_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                
-              }}      
-              value={characterSet.spell_lvl_6_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 6</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_6_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                
+                }}      
+                value={characterSet.spell_lvl_6_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_6}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_6_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_6.push(8);
-                charset.spell_lvl_6_count = charset.cspell_lvl_6_count + 1
+                charset.spell_lvl_6_count = charset.spell_lvl_6_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')    
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 7</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_7_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                  
-              }}      
-              value={characterSet.spell_lvl_7_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 7</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_7_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                  
+                }}      
+                value={characterSet.spell_lvl_7_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_7}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_7_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_7.push(23);
-                charset.spell_lvl_7_count = charset.cspell_lvl_7_count + 1
+                charset.spell_lvl_7_count = charset.spell_lvl_7_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')    
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 8</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_8_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                 
-              }}      
-              value={characterSet.spell_lvl_8_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text>Spell lvl 8</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_8_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                 
+                }}      
+                value={characterSet.spell_lvl_8_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_8}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_8_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_8.push(2);
-                charset.spell_lvl_8_count = charset.cspell_lvl_8_count + 1
+                charset.spell_lvl_8_count = charset.spell_lvl_8_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')   
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
-        <View>
-          <View>
-            <Text>Spell lvl 9</Text>
-            <TextInput 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}  
-              onChangeText={text => {            
-                const charset = {...characterSet}; 
-                charset.spell_lvl_9_text = text
-                setCharacterSet(charset)            
-                props.changeCharacterParams(charset, 'spells')                
-              }}      
-              value={characterSet.spell_lvl_9_text}>            
-            </TextInput> 
-          </View>
+        <View style={styles.marginBottom}>
+          <ImageBackground source={title} style={styles.backgroundImageItems}>
+            <View style={styles.title}>
+              <Text >Spell lvl 9</Text>
+              <TextInput 
+                style={ styles.textInput }
+                maxLength={8} 
+                onChangeText={text => {            
+                  const charset = {...characterSet}; 
+                  charset.spell_lvl_9_text = text
+                  setCharacterSet(charset)            
+                  props.changeCharacterParams(charset, 'spells')                
+                }}      
+                value={characterSet.spell_lvl_9_text}>            
+              </TextInput> 
+            </View>
+          </ImageBackground>
           {spell_lvl_9}
           <Button
             onPress={() => {
               if (characterSet.spell_lvl_9_count !== 10) {
                 const charset = {...characterSet}; 
                 charset.spell_lvl_9.push(5);
-                charset.spell_lvl_9_count = charset.cspell_lvl_9_count + 1
+                charset.spell_lvl_9_count = charset.spell_lvl_9_count + 1
                 setCharacterSet(charset)            
                 props.changeCharacterParams(charset, 'spells')
               }               
             }}
-            title="Add"
-            color="green"
-            accessibilityLabel="Learn more about this purple button"
+            label="Add"
+            backgroundColor="#E7C49D"
+            color="black"            
+            labelStyle={{fontWeight: '700'}}            
+            style={{borderWidth: 1, width: 250, marginTop: 5}}
           />  
         </View>
         <Modal
@@ -892,23 +1009,23 @@ function Spells(props) {
           transparent={true}
           visible={showModal}          
         >
-          <View >
-            <View>
-              <Text>Casting time: {content.casting_time}</Text>
-              <Text>Components: {content.components}</Text>
-              <Text>Description: {content.description}</Text>
-              <Text>Duration: {content.duration}</Text>
-              <Text>Level: {content.level}</Text>
-              <Text>Range: {content.range}</Text>
-              <Text>School: {content.school}</Text>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.marginBottom}>Casting time: {content.casting_time}</Text>
+              <Text style={styles.marginBottom}>Components: {content.components}</Text>
+              <Text style={styles.marginBottom}>Description: {content.description}</Text>
+              <Text style={styles.marginBottom}>Duration: {content.duration}</Text>
+              <Text style={styles.marginBottom}>Level: {content.level}</Text>
+              <Text style={styles.marginBottom}>Range: {content.range}</Text>
+              <Text style={styles.marginBottom}>School: {content.school}</Text>
 
               <TouchableHighlight
-                style={{backgroundColor: "#2196F3" }}
+                style={styles.openButton}
                 onPress={() => {
                   setShowModal(!showModal);
                 }}
               >
-                <Text>Hide Modal</Text>
+                <Text>Hide information</Text>
               </TouchableHighlight>
             </View>
           </View>

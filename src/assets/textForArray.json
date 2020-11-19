@@ -1,10 +1,10 @@
 {
     "characteristicsText": ["strength", "dexterity", "body_type", "intelligence", "wisdom", "charisma"],
     "skillsText": ["acrobatics", "athletics", "magic", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "conviction", "religion", "sleight_of_hand", "secrecy", "survival", "communication_with_animals"],
-    "infoText": ["personality_traits", "ideals", "affection", "vices", "features_and_abilities", "languages"],
+    "infoText": ["personality_traits", "ideals", "affection", "vices", "languages"],
     "coinsText": ["copper_coins", "silver_coins", "electrum_coins", "gold_coins", "platinum_coins"],
     "descriptionText": ["age", "height", "weight", "eye_color", "hair_color", "color_of_the_skin"],
-    "classText": ["lvl", "class", "pre_history", "history", "worldviewer", "experience_points"],
+    "classText": ["lvl", "class", "pre_history", "race", "worldviewer", "experience_points"],
     "hpText": ["hp_full", "hp_now",  "hp_temporary", "hp_for_lvl"],
     "armorText": ["armor_class", "initiative", "speed"]
 }
